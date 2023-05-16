@@ -1,15 +1,26 @@
 var mainArray = [];
 var realNumberArray = [];
 
+// hàm xắp xếp mảng:
+function f_sort(arr) {
+  for (var i = 0; i < arr.length; i++) {
+    for (var j = 1; j < arr.length; j++) {
+      if (arr[i] > arr[j]) {
+        var temp = arr[i];
+        arr[i] = arr[j];
+        arr[j] = temp;
+      }
+    }
+  }
+  return arr;
+}
 function addNumberToArray() {
   var n = Number(document.getElementById("n").value);
   mainArray.push(n);
   document.querySelector(".showMainArray").innerHTML = mainArray;
   return mainArray;
 }
-function sum(a, b) {
-  return a + b;
-}
+
 /*
 ! Bài 1: Tổng các số dương trong mảng
 !input: 
@@ -69,12 +80,16 @@ function countPositiveNumbers() {
 !input: 
 mảng nhập 
 !progress: 
-mainArray.sort() Xắp xếp mảng theo thứ tự từ nhỏ đến lớn
+mainArray.sort(function (a, b) {
+      return a - b;
+    }) Xắp xếp mảng theo thứ tự từ nhỏ đến lớn
 !output: 
 Số nhỏ nhất trong mảng
  */
 function findMinNumberOfArray() {
-  mainArray.sort();
+  mainArray.sort(function (a, b) {
+    return a - b;
+  });
   document.querySelector(".showFindMinNumberOfArray").innerHTML =
     "Số nhỏ nhất trong mảng: " + mainArray[0];
 }
@@ -94,8 +109,10 @@ for (var i = 0; i < mainArray.length; i++) {
 !output: 
 Số nhỏ nhất trong mảng
  */
-function findMinNumberOfArray() {
-  mainArray.sort();
+function maxPositiveNumbersOfArray() {
+  mainArray.sort(function (a, b) {
+    return a - b;
+  });
   for (var i = 0; i < mainArray.length; i++) {
     if (mainArray[i] > 0) {
       break;
@@ -145,6 +162,7 @@ function endEvenNumberOfArray() {
 mảng nhập, vị trí 1, vị trí 2  
 !progress: 
 mainArray.sort() Xắp xếp mảng theo thứ tự từ nhỏ đến lớn
+để cho ui/ux vị trí nhập để đổi chổ trong mảng bắt đầu từ 1 đến = arr.length
 for (var i = 0; i < mainArray.length; i++) {
     if (mainArray[i] > 0) {
       break;
@@ -175,8 +193,13 @@ mainArray.sort()Sắp xếp mảng theo thứ tự tăng dần
 thứ tự mảng tăng dần
  */
 function arrangeArray() {
+  // var sortArrays = mainArray.sort();
+
   document.querySelector(".showArrangeArray").innerHTML =
-    "Mảng sắp xếp từ nhỏ đến lớn: " + mainArray.sort();
+    "Mảng sắp xếp từ nhỏ đến lớn: " +
+    mainArray.sort(function (a, b) {
+      return a - b;
+    });
 }
 
 /* ========================================================= */
